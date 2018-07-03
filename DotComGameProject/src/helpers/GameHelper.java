@@ -44,5 +44,45 @@ public class GameHelper {
 		if((comCount % 2) == 1){
 			incr = gridLength;
 		}
+		
+		while( !success && attemps++ < 200 ){
+//			System.out.println("entered while loop for assigning dotcom grid locations");
+			location = (int)(Math.random() * gridSize);
+			int x = 0;
+			success = true;	
+			while(success && x < comSize){
+				if(grid[location] == 0){
+					coords[x++] = location;
+					location += incr;
+					if(location >= gridSize){
+						success = false;
+					}
+					if(x>0 && (location % gridLength == 0)){
+						success = false;
+					}
+				}
+				else{
+						success = false;
+					
+				}
+			}
+		}
+		
+		int x = 0;
+		int row = 0;
+		int column = 0;
+		
+		while(x < comSize){
+			grid[coords[x]] = 1;
+			row = (int)(coords[x] / gridLength);
+			column = coords[x] % gridLength;
+			temp = String.valueOf(alphabet.charAt(column));
+			
+			alphaCells.add(temp.concat(Integer.toString(row)));
+			x++;
+		}
+		
+		return alphaCells;
+
 	}
 }

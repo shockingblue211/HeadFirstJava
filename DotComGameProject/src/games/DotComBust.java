@@ -3,6 +3,7 @@ package games;
 import java.util.ArrayList;
 
 import dotComs.DotCom;
+import helpers.GameHelper;
 
 public class DotComBust {
 	private GameHelper helper = new GameHelper();
@@ -20,6 +21,7 @@ public class DotComBust {
 		dotComsList.add(two);
 		dotComsList.add(three);
 		
+//		System.out.println("Created dotcoms");
 		for(DotCom d : dotComsList){
 			ArrayList<String> l = helper.placeDotCom(3);
 			d.setLocationCells(l);
@@ -44,7 +46,7 @@ public class DotComBust {
 		String result = "miss";
 		for(DotCom d : dotComsList){
 			result = d.checkYourself(userGuess);
-			if(result.equals("hit"));
+			if(result.equals("hit"))
 				break;
 			if(result.equals("kill")){
 				dotComsList.remove(d);
